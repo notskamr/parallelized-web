@@ -23,7 +23,7 @@
         <style>
             {{css | postcss | safe}}</style>
     </head>
-    <body class="font-mono dark:bg-gray-900 transition-colors duration-200">
+    <body class="font-mono dark:bg-gray-900 transition-colors duration-500 overflow-x-hidden flex flex-col h-screen">
         <div class="w-[100dvw] flex justify-items-center items-center flex-col p-8">
             <a
                 class="text-white invert dark:invert-0 underline underline-offset-2 transition-alls flex flex-col items-center
@@ -42,6 +42,11 @@
             <label class="absolute top-9 right-9" for="switch"></label>
         </div>
         <script src="/scripts/toggle_theme.js"></script>
+        <footer class="mt-auto mb-8 ml-auto mr-auto text-center prose dark:prose-invert opacity-50">
+            created with
+            <a class="opacity-80" href="https://www.11ty.dev/">11ty</a>
+            by varun sahni
+        </footer>
     </body>
     <style>
         input[type="checkbox"] {
