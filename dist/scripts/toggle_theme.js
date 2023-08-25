@@ -1,11 +1,8 @@
 const toggle = document.querySelector(".theme-toggle");
 if (localStorage.getItem("theme") === "light") {
-  document.body.classList.remove("duration-500", "transition-colors");
-  document.documentElement.classList.remove("dark");
   toggle.checked = true;
-  setTimeout(() => {
-    document.body.classList.add("duration-500", "transition-colors");
-  }, 500);
+} else {
+  toggle.checked = false;
 }
 
 toggle.addEventListener("change", (e) => {

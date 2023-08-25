@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>{{ title }}</title>
+        <script>
+            localStorage.setItem("theme", localStorage.getItem('theme') || "dark");
+            document
+                .documentElement
+                .classList
+                .remove(
+                    localStorage.getItem('theme') === "dark"
+                    ? ""
+                    : "dark");
+        </script>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+        <link rel="icon" href="/assets/parallelized-small.svg" type="image/svg+xml"/> {% set css %}
+        {% include "src/styles/index.css" %}
+        {% endset %}
+        <style>
+            {{css | postcss | safe}}</style>
+    </head>
+    <body class="font-mono dark:bg-gray-900">
+        <div class="w-[100dvw] flex justify-items-center items-center flex-col p-8">
+            <a
+                class="text-white invert dark:invert-0 underline underline-offset-2 transition-alls flex flex-col items-center
+                    justify-center hover:-translate-y-1 hover:text-orange-400 duration-300 mb-12"
+                href="/">
+                <div class="w-[300px] h-[50px]">
+                    <img src="/assets/parallelized-svg1.1.svg" class="w-[300px]"/>
+                </div>
+                <span>return to home</span>
+            </a>
+            <div class="w-[90%] max-w-[600px] prose dark:prose-invert transition-colors duration-500 flex flex-col">
+                {{ content | safe }}
+            </div>
+        </div>
+        <div class="hidden sm:block">
+            <span class="font-mono prose dark:prose-invert absolute top-9 right-0 pr-[100px]">toggle theme</span>
+            <input type="checkbox" class="absolute top-9 right-9 theme-toggle hidden" id="switch"/>
+            <label class="absolute top-9 right-9" for="switch"></label>
+        </div>
+        <script src="/scripts/toggle_theme.js"></script>
+    </body>
+    <style>
+        input[type="checkbox"] {
+            height: 0;
+            width: 0;
+            visibility: hidden;
+        }
+        label {
+            cursor: pointer;
+            text-indent: -9999px;
+            width: 50px;
+            height: 25px;
+            background: rgb(255, 255, 255);
+            display: block;
+            border-radius: 100px;
+            position: relative;
+        }
+        label:after {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 15px;
+            height: 15px;
+            background: #000000;
+            border-radius: 90px;
+            transition: 0.5s;
+        }
+        input + label {
+            transition: background-color 0.2s ease-in-out;
+        }
+        input:checked + label {
+            background-color: #000000;
+        }
+        input:checked + label:after {
+            left: calc(100% - 5px);
+            transform: translateX(-100%);
+            background-color: white;
+        }
+        label:active:after {
+            width: 130px;
+        }
+    </style>
+</html>

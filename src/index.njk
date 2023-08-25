@@ -4,16 +4,19 @@ layout: "layouts/default.njk"
 ---
 
 <div class="w-[100dvw] h-[100dvh] flex flex-col justify-center items-center">
-  <input type="checkbox" id="switch" class="theme-toggle"/>
-  <label for="switch">Toggle</label>
+  <div class="flex flex-row items-center justify-center">
+    <span class="font-mono mr-4">toggle theme</span>
+    <input type="checkbox" id="switch" class="theme-toggle"/>
+    <label for="switch">Toggle</label>
+  </div>
   <img src="/assets/parallelized-svg1.1.svg" class="w-[90%] sm:w-[40%] invert dark:invert-0 -mb-2"/>
-  <div class="mb-8">the 2023 edition</div>
-  <div class="w-[90%] sm:w-[40%] flex justify-evenly items-center">
+  <div class="mb-8">shriteq 2023</div>
+  <div class="w-[90%] sm:w-[40%] flex justify-items-center justify-evenly items-center">
     <a
-      href="/why"
+      href="/what-and-why"
       class="no-underline px-4 py-2 bg-[#69f269] dark:bg-[#ec6868] transition-all duration-500 hover:scale-105
         hover:saturate-150 hover:-translate-y-2">
-      why</a>
+      what/why</a>
     <a
       href="/guidelines"
       class="no-underline px-4 py-2 bg-[#f39cfd] dark:bg-[#ff8a4b] transition-all duration-500 hover:scale-105

@@ -4,23 +4,27 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>{{ title }}</title>
+    <script>
+      localStorage.setItem("theme", localStorage.getItem('theme') || "dark");
+      document
+        .documentElement
+        .classList
+        .remove(
+          localStorage.getItem('theme') === "dark"
+          ? ""
+          : "dark");
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-    <link rel="icon" href="/assets/parallelized-small.svg" type="image/svg+xml"/>
-    <script>
-      if (!localStorage.getItem("theme")) {
-        localStorage.setItem("theme", "dark");
-      }
-    </script>
-    {% set css %}
+    <link rel="icon" href="/assets/parallelized-small.svg" type="image/svg+xml"/> {% set css %}
     {% include "src/styles/index.css" %}
     {% endset %}
     <style>
       {{css | postcss | safe}}</style>
   </head>
-  <body class="prose font-mono dark:bg-gray-900 dark:prose-invert transition-colors duration-500">
+  <body class="prose font-mono dark:bg-gray-900 dark:prose-invert">
     {{ content | safe }}
+    <script src="/scripts/toggle_theme.js"></script>
   </body>
-  <script src="/scripts/toggle_theme.js"></script>
 </html>
