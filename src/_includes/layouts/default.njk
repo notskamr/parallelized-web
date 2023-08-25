@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{{ title }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+    <link rel="icon" href="/assets/parallelized-small.svg" type="image/svg+xml"/>
+    <script>
+      if (!localStorage.getItem("theme")) {
+        localStorage.setItem("theme", "dark");
+      }
+    </script>
+    {% set css %}
+    {% include "src/styles/index.css" %}
+    {% endset %}
+    <style>
+      {{css | postcss | safe}}</style>
+  </head>
+  <body class="prose font-mono dark:bg-gray-900 dark:prose-invert transition-colors duration-500">
+    {{ content | safe }}
+  </body>
+  <script src="/scripts/toggle_theme.js"></script>
+</html>

@@ -1,0 +1,65 @@
+---
+title: "parallelized"
+layout: "layouts/default.njk"
+---
+
+<div class="w-[100dvw] h-[100dvh] flex flex-col justify-center items-center">
+  <input type="checkbox" id="switch" class="theme-toggle"/>
+  <label for="switch">Toggle</label>
+  <img src="/assets/parallelized-svg1.1.svg" class="w-[90%] sm:w-[40%] invert dark:invert-0 -mb-2"/>
+  <div class="mb-8">the 2023 edition</div>
+  <div class="w-[90%] sm:w-[40%] flex justify-evenly items-center">
+    <a
+      href="/why"
+      class="no-underline px-4 py-2 bg-[#69f269] dark:bg-[#ec6868] transition-all duration-500 hover:scale-105
+        hover:saturate-150 hover:-translate-y-2">
+      why</a>
+    <a
+      href="/guidelines"
+      class="no-underline px-4 py-2 bg-[#f39cfd] dark:bg-[#ff8a4b] transition-all duration-500 hover:scale-105
+        hover:saturate-150 hover:-translate-y-2">
+      guidelines</a>
+  </div>
+</div>
+<style>
+  input[type="checkbox"] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+  }
+  label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 50px;
+    height: 25px;
+    background: rgb(255, 255, 255);
+    display: block;
+    border-radius: 100px;
+    position: relative;
+  }
+  label:after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 15px;
+    height: 15px;
+    background: #000000;
+    border-radius: 90px;
+    transition: 0.5s;
+  }
+  input + label {
+    transition: background-color 0.2s ease-in-out;
+  }
+  input:checked + label {
+    background-color: #000000;
+  }
+  input:checked + label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+    background-color: white;
+  }
+  label:active:after {
+    width: 130px;
+  }
+</style>
