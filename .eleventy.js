@@ -1,6 +1,16 @@
 const postcss = require("postcss");
 const tailwindcss = require("tailwindcss");
 const autoprefixer = require("autoprefixer");
+const markdownIt = require("markdown-it");
+const markdownItAttrs = require("markdown-it-attrs");
+
+const markdownItOptions = {
+  html: true,
+  breaks: true,
+  linkify: true,
+};
+
+const markdownLib = markdownIt(markdownItOptions).use(markdownItAttrs);
 
 module.exports = (eleventyConfig) => {
   eleventyConfig.addNunjucksAsyncFilter("postcss", (cssCode, done) => {
@@ -11,6 +21,9 @@ module.exports = (eleventyConfig) => {
         (e) => done(e, null)
       );
   });
+
+  eleventyConfig.setLibrary("md", markdownLib);
+
   eleventyConfig.addPassthroughCopy("src/scripts/toggle_theme.js");
   eleventyConfig.addPassthroughCopy("src/assets", "/assets");
   eleventyConfig.addWatchTarget("styles/**/*.css");
