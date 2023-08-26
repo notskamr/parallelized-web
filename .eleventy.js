@@ -26,6 +26,7 @@ module.exports = (eleventyConfig) => {
 
   eleventyConfig.addPassthroughCopy("src/scripts/toggle_theme.js");
   eleventyConfig.addPassthroughCopy("src/assets", "/assets");
+  eleventyConfig.addPassthroughCopy("src/admin", "/admin");
   eleventyConfig.addWatchTarget("styles/**/*.css");
   return {
     dir: {

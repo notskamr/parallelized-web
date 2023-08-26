@@ -1,4 +1,5 @@
 ---
+tags: guideline_page
 title: 'parallelized | guidelines'
 layout: "layouts/md-layout.njk"
 ---
