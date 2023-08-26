@@ -21,7 +21,7 @@
       {% set css %}{% include "src/styles/index.css" %}{% endset %}
     <style>{{css | postcss | safe}}</style>
   </head>
-  <body class="prose font-mono dark:bg-gray-900 dark:prose-invert transition-colors duration-500">
+  <body class="prose font-mono dark:bg-gray-900 dark:noprint:prose-invert transition-colors duration-500">
     {{ content | safe }}
     <script src="/scripts/toggle_theme.js"></script>
   </body>

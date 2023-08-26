@@ -23,28 +23,37 @@
             {{css | postcss | safe}}</style>
     </head>
     <body class="font-mono dark:bg-gray-900 transition-colors duration-500 overflow-x-hidden flex flex-col h-screen">
-        <div class="w-[100dvw] flex justify-items-center items-center flex-col p-8">
+        <div class="w-[100dvw] flex justify-items-center items-center flex-col p-8 print:p-4">
             <a
-                class="text-white invert dark:invert-0 underline underline-offset-2 transition-alls flex flex-col items-center
+                class="text-white invert dark:noprint:invert-0 underline underline-offset-2 transition-alls flex flex-col items-center
                     justify-center hover:-translate-y-1 hover:text-orange-400 duration-300 mb-12"
                 href="/">
-                <img src="/assets/parallelized-svg1.1.svg" width="1280" height="217" class="w-[300px] h-auto"/>
-                <span>return to home</span>
+                <img
+                    src="/assets/parallelized-svg1.1.svg"
+                    width="1280"
+                    height="217"
+                    alt="Themed parallellized logo"
+                    class="w-[300px] h-auto"/>
+                <span class="print:hidden">return to home</span>
             </a>
-            <div class="w-[90%] max-w-[600px] prose dark:prose-invert transition-colors duration-500 flex flex-col">
+            <div class="w-[90%] max-w-[600px] print:max-w-none prose dark:noprint:prose-invert transition-colors duration-500 flex
+                    flex-col">
                 {{ content | safe }}
             </div>
         </div>
-        <div class="hidden sm:block">
+        <div class="hidden sm:block print:hidden">
             <span class="font-mono prose dark:prose-invert absolute top-9 right-0 pr-[100px]">toggle theme</span>
             <input type="checkbox" class="absolute top-9 right-9 theme-toggle hidden" id="switch"/>
             <label class="absolute top-9 right-9" for="switch"></label>
         </div>
         <script src="/scripts/toggle_theme.js"></script>
-        <footer class="mt-auto mb-8 mx-auto text-center prose dark:prose-invert opacity-50">
+        <footer id="webfooter" class="mt-auto mb-8 mx-auto text-center prose print:hidden dark:prose-invert opacity-50">
             created with
             <a class="opacity-80" href="https://www.11ty.dev/">11ty</a>
             by varun sahni
+        </footer>
+        <footer id="printfooter" class="hidden print:block mt-auto mx-auto text-center prose opacity-50">
+            parallellized @ shriteq 2023
         </footer>
     </body>
     <style>
