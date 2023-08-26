@@ -1,5 +1,6 @@
 backend:
   name: git-gateway
+  repo: "notskamr/parallelized-web"
 media_folder: "src/assets/uploads"
 public_folder: "/assets/uploads"
 publish_mode: editorial_workflow
