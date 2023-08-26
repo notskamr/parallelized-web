@@ -3,6 +3,7 @@ const tailwindcss = require("tailwindcss");
 const autoprefixer = require("autoprefixer");
 const markdownIt = require("markdown-it");
 const markdownItAttrs = require("markdown-it-attrs");
+const markdownItAnchor = require("markdown-it-anchor");
 
 const markdownItOptions = {
   html: true,
@@ -10,7 +11,9 @@ const markdownItOptions = {
   linkify: true,
 };
 
-const markdownLib = markdownIt(markdownItOptions).use(markdownItAttrs);
+const markdownLib = markdownIt(markdownItOptions)
+  .use(markdownItAttrs)
+  .use(markdownItAnchor, {});
 
 module.exports = (eleventyConfig) => {
   eleventyConfig.addNunjucksAsyncFilter("postcss", (cssCode, done) => {
@@ -21,6 +24,8 @@ module.exports = (eleventyConfig) => {
         (e) => done(e, null)
       );
   });
+
+  eleventyConfig.addPlugin(require("eleventy-plugin-nesting-toc"));
 
   eleventyConfig.setLibrary("md", markdownLib);
 

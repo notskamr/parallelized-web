@@ -1,7 +1,7 @@
 ---
 title: '|parallelized| - what/why'
+toc: false
 layout: "layouts/md-layout.njk"
-
 ---
 
 ## what is _parallelized?_
@@ -12,4 +12,4 @@ layout: "layouts/md-layout.njk"
 - Teams must first develop the tasks themselves and then optimize them to achieve the highest speedup multiple
 - All problem guidelines must be followed and all tasks must be completed
 - The guidelines contain details about the elements of the program that must be implemented for correctness (eg. required functions, classes)
-- A Python file for testing is provided which tests your implementations for functionality and checks the current time your implementation takes to run (on your respective system, this may not match with how fast it runs on the benchmarking system) - this is meant to gauge your progress and see whether your program works in the first place
+  - &gt;= **Note:** Local tests check for correctness and speedup. However, the speedup multiple may not be indicative of the speedup used for scoring due to discrepancies in the hardware used for testing and your systems - thus, it is better if you use the local speedup as a gauge for performance {.text-xs}

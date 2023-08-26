@@ -8,9 +8,8 @@ if (localStorage.getItem("theme") === "light") {
 toggle.addEventListener("change", (e) => {
   if (toggle.checked) {
     localStorage.setItem("theme", "light");
-    document.documentElement.classList.remove("dark");
   } else {
     localStorage.setItem("theme", "dark");
-    document.documentElement.classList.add("dark");
   }
+  document.documentElement.classList.toggle("dark");
 });
