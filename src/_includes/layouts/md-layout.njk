@@ -22,7 +22,7 @@
         <style>
             {{css | postcss | safe}}</style>
     </head>
-    <body class="font-mono dark:bg-gray-900 transition-colors duration-500 overflow-x-hidden flex flex-col h-screen">
+    <body class="font-mono dark:bg-gray-900 transition-colors duration-500 overflow-x-hidden flex flex-col min-h-screen">
         <div class="w-[100dvw] flex justify-items-center items-center flex-col p-8 print:p-4">
             <a
                 class="text-white invert dark:noprint:invert-0 underline underline-offset-2 flex flex-col items-center justify-center
@@ -57,54 +57,70 @@
                 {%- endif -%}
                 {{ content | safe }}
             </div>
-        </body>
+        </div>
+        <div class="hidden sm:block print:hidden">
+            <span class="font-mono prose dark:prose-invert absolute top-9 right-0 pr-[100px]">toggle theme</span><input type="checkbox" class="absolute top-9 right-9 theme-toggle hidden" id="switch"/><label class="absolute top-9 right-9" for="switch"></label>
+        </div>
+        <footer id="webfooter" class="mt-auto mx-auto mb-2 text-center prose print:hidden dark:prose-invert opacity-50">created
+            with
+            <a class="opacity-80" href="https://www.11ty.dev/">11ty</a>
+            by varun sahni</footer>
+        <footer id="printfooter" class="hidden print:block mt-auto mx-auto text-center prose opacity-50">parallellized @ shriteq
+            2023</footer>
+        <script src="/scripts/toggle_theme.js"></script>
+        <script>
+            const tocButton = document.getElementById("toc-button");
+            const toc = document.getElementById("table-of-contents");
+            const tocDiv = document.getElementById("toc-div");
+            tocButton.addEventListener("click", () => {
+                toc.classList.toggle("hidden");
+                tocDiv.classList.toggle("mb-6");
+                tocButton.innerText = toc.classList.contains("hidden")
+                    ? "expand table of contents ↓"
+                    : "collapse table of contents ↑";
+            });
+        </script>
     </body>
-</html></body></body></html></div><div class="hidden sm:block print:hidden"><span class="font-mono prose dark:prose-invert absolute top-9 right-0 pr-[100px]">toggle theme</span><input type="checkbox" class="absolute top-9 right-9 theme-toggle hidden" id="switch"/><label class="absolute top-9 right-9" for="switch"></label></div><script src="/scripts/toggle_theme.js"></script><footer id="webfooter" class="mt-auto mb-8 mx-auto text-center prose print:hidden dark:prose-invert opacity-50">created with<a class="opacity-80" href="https://www.11ty.dev/">11ty</a>by varun sahni</footer><footer id="printfooter" class="hidden print:block mt-auto mx-auto text-center prose opacity-50">parallellized @ shriteq 2023</footer><script>const tocButton = document.getElementById("toc-button");
-const toc = document.getElementById("table-of-contents");
-const tocDiv = document.getElementById("toc-div");
-tocButton.addEventListener("click", () => {
-    toc.classList.toggle("hidden");
-    tocDiv.classList.toggle("mb-6");
-    tocButton.innerText = toc.classList.contains("hidden")
-        ? "expand table of contents ↓"
-        : "collapse table of contents ↑";
-});</script></body><style>input[type="checkbox"] {
-    height: 0;
-    width: 0;
-    visibility: hidden;
-}
-label {
-    cursor: pointer;
-    text-indent: -9999px;
-    width: 50px;
-    height: 25px;
-    background: rgb(255, 255, 255);
-    display: block;
-    border-radius: 100px;
-    position: relative;
-}
-label:after {
-    content: "";
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 15px;
-    height: 15px;
-    background: #000000;
-    border-radius: 90px;
-    transition: 0.5s;
-}
-input + label {
-    transition: background-color 0.2s ease-in-out;
-}
-input:checked + label {
-    background-color: #000000;
-}
-input:checked + label:after {
-    left: calc(100% - 5px);
-    transform: translateX(-100%);
-    background-color: white;
-}
-label:active:after {
-    width: 130px;
-}</style></html>
+    <style>
+        input[type="checkbox"] {
+            height: 0;
+            width: 0;
+            visibility: hidden;
+        }
+        label {
+            cursor: pointer;
+            text-indent: -9999px;
+            width: 50px;
+            height: 25px;
+            background: rgb(255, 255, 255);
+            display: block;
+            border-radius: 100px;
+            position: relative;
+        }
+        label:after {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 15px;
+            height: 15px;
+            background: #000000;
+            border-radius: 90px;
+            transition: 0.5s;
+        }
+        input + label {
+            transition: background-color 0.2s ease-in-out;
+        }
+        input:checked + label {
+            background-color: #000000;
+        }
+        input:checked + label:after {
+            left: calc(100% - 5px);
+            transform: translateX(-100%);
+            background-color: white;
+        }
+        label:active:after {
+            width: 130px;
+        }
+    </style>
+</html>
