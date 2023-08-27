@@ -19,14 +19,14 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
         <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet"/>
             {% set css %}{% include "src/styles/index.css" %}{% endset %}
-        <style>
-            {{css | postcss | safe}}</style>
+        <style>{{css | postcss | safe}}</style>
+        <style></style>
     </head>
-    <body class="font-mono dark:bg-gray-900 transition-colors duration-500 overflow-x-hidden flex flex-col min-h-screen">
+    <body class="font-mono dark:noprint:bg-gray-900 transition-colors duration-500 overflow-x-hidden flex flex-col min-h-screen">
         <div class="w-[100dvw] flex justify-items-center items-center flex-col p-8 print:p-4">
             <a
                 class="text-white invert dark:noprint:invert-0 underline underline-offset-2 flex flex-col items-center justify-center
-                    hover:-translate-y-1 hover:text-orange-400 duration-300 mb-12"
+                    hover:-translate-y-1 hover:text-orange-400 duration-300 mb-8"
                 href="/">
                 <img
                     src="/assets/parallelized-svg1.1.svg"
@@ -41,16 +41,16 @@
                     <button
                         type="button"
                         id="toc-button"
-                        class="text-black dark:text-white hover:text-[#046dc3] dark:hover:text-orange-400 w-[90%] text-left max-w-[600px]
+                        class="text-black dark:text-white hover:text-[#046dc3] dark:hover:text-orange-400 w-[90%] text-left max-w-[800px]
                             underline underline-offset-2 duration-300">
                         expand table of contents &darr;
                     </button>
-                    <aside id="table-of-contents" class="w-[65%] pl-4 prose dark:prose-invert text-left hidden">
+                    <aside id="table-of-contents" class="w-[90%] max-w-[800px] pl-4 prose dark:prose-invert text-left hidden">
                         {{ content | toc | safe }}
                     </aside>
                 </div>
             {%- endif -%}
-            <div class="w-[90%] max-w-[600px] print:max-w-none prose dark:noprint:prose-invert transition-colors duration-500 flex
+            <div class="w-[90%] max-w-[800px] print:max-w-none prose dark:noprint:prose-invert transition-colors duration-500 flex
                     flex-col">
                 {%- if toc %}
                     <hr class="mb-4"/>
@@ -59,14 +59,15 @@
             </div>
         </div>
         <div class="hidden sm:block print:hidden">
-            <span class="font-mono prose dark:prose-invert absolute top-9 right-0 pr-[100px]">toggle theme</span><input type="checkbox" class="absolute top-9 right-9 theme-toggle hidden" id="switch"/><label class="absolute top-9 right-9" for="switch"></label>
+            <span class="font-mono prose dark:prose-invert absolute top-9 right-0 pr-[100px]">toggle theme</span><input type="checkbox" class="absolute top-9 right-9 theme-toggle hidden" id="switch"/><label class="absolute top-9 right-9" id="theme-toggle-label" for="switch"></label>
         </div>
         <footer id="webfooter" class="mt-auto mx-auto mb-2 text-center prose print:hidden dark:prose-invert opacity-50">created
             with
             <a class="opacity-80" href="https://www.11ty.dev/">11ty</a>
             by varun sahni</footer>
         <footer id="printfooter" class="hidden print:block mt-auto mx-auto text-center prose opacity-50">parallellized @ shriteq
-            2023</footer>
+            2023
+        </footer>
         <script src="/scripts/toggle_theme.js"></script>
         <script>
             const tocButton = document.getElementById("toc-button");
@@ -82,12 +83,16 @@
         </script>
     </body>
     <style>
-        input[type="checkbox"] {
+        .cb > input {
+            margin-right: 0.5rem;
+            border-radius: 50%
+        }
+        .theme-toggle {
             height: 0;
             width: 0;
             visibility: hidden;
         }
-        label {
+        #theme-toggle-label {
             cursor: pointer;
             text-indent: -9999px;
             width: 50px;
@@ -95,9 +100,9 @@
             background: rgb(255, 255, 255);
             display: block;
             border-radius: 100px;
-            position: relative;
+            position: absolute;
         }
-        label:after {
+        #theme-toggle-label:after {
             content: "";
             position: absolute;
             top: 5px;
@@ -108,18 +113,18 @@
             border-radius: 90px;
             transition: 0.5s;
         }
-        input + label {
+        input + #theme-toggle-label {
             transition: background-color 0.2s ease-in-out;
         }
-        input:checked + label {
+        input:checked + #theme-toggle-label {
             background-color: #000000;
         }
-        input:checked + label:after {
+        input:checked + #theme-toggle-label:after {
             left: calc(100% - 5px);
             transform: translateX(-100%);
             background-color: white;
         }
-        label:active:after {
+        #theme-toggle-label:active:after {
             width: 130px;
         }
     </style>
