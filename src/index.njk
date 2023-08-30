@@ -10,26 +10,31 @@ layout: "layouts/index-layout.njk"
     <label for="switch">Toggle</label>
   </div>
   <img
-    src="/assets/parallelized-svg1.1.svg"
+  src="/assets/parallelized-svg1.1.svg"
     width="1280"
     height="217"
-    class="w-[90%] sm:w-[40%] invert dark:noprint:invert-0 h-auto -mb-2"
+    class="w-[90%] sm:w-[40%] invert dark:noprint:invert-0 h-auto mb-8"
     alt="Themed parallellized logo"/>
-  <div class="mb-8">shriteq 2023</div>
+  {# <div class="mb-8">shriteq 2023</div> #}
   <div class="w-[90%] sm:w-[40%] flex justify-items-center justify-evenly items-center">
     <a
       href="/what-and-why"
-      class="no-underline px-4 py-2 bg-[#69f269] dark:bg-[#ec6868] transition-all duration-500 hover:scale-105
-        hover:saturate-150 hover:-translate-y-2">
+      class="no-underline px-4 py-2 bg-[#69f269] text-center w-[140px] dark:bg-[#ec6868] transition-all duration-500
+        hover:scale-105 hover:saturate-150 hover:-translate-y-2 justify-self-start">
       what/why</a>
     <a
       href="/guidelines"
-      class="no-underline px-4 py-2 bg-[#f39cfd] dark:bg-[#ff8a4b] transition-all duration-500 hover:scale-105
-        hover:saturate-150 hover:-translate-y-2">
+      class="no-underline px-4 py-2 text-center w-[140px] bg-[#f39cfd] dark:bg-[#ff8a4b] transition-all duration-500
+        hover:scale-105 hover:saturate-150 hover:-translate-y-2 justify-self-end">
       guidelines</a>
   </div>
-  <footer class="absolute bottom-8 text-center opacity-50">
-    created with
+  {# <footer class="absolute bottom-2 text-center opacity-50">
+                            created with
+                            <a class="opacity-80" href="https://www.11ty.dev/">11ty</a>
+                            by varun sahni
+                          </footer> #}
+  <footer class="absolute bottom-2 text-center opacity-50">
+    parallelized @ shriteq 2023 | created with
     <a class="opacity-80" href="https://www.11ty.dev/">11ty</a>
     by varun sahni
   </footer>

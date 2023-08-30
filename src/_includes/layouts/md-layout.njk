@@ -22,8 +22,8 @@
         <style>{{css | postcss | safe}}</style>
         <style></style>
     </head>
-    <body class="font-mono dark:noprint:bg-gray-900 transition-colors duration-500 overflow-x-hidden flex flex-col min-h-screen">
-        <div class="w-[100dvw] flex justify-items-center items-center flex-col p-8 print:p-4">
+    <body class="font-mono dark:bg-gray-900 transition-colors duration-500 overflow-x-hidden flex flex-col min-h-screen">
+        <div class="w-[100dvw] flex justify-items-center items-center flex-col p-8 print:p-0">
             <a
                 class="text-white invert dark:noprint:invert-0 underline underline-offset-2 flex flex-col items-center justify-center
                     hover:-translate-y-1 hover:text-orange-400 duration-300 mb-8"
@@ -37,23 +37,26 @@
                 <span class="print:hidden">return to home</span>
             </a>
             {%- if toc %}
-                <div id="toc-div" class="w-full mb-6 flex justify-center items-center flex-col print:hidden">
+                <hr class="hidden print:block w-[90%] print:w-full max-w-[800px] print:max-w-none prose"/>
+                <div id="toc-div" class="w-full mb-6 print:mb-0 flex justify-center items-center flex-col">
                     <button
                         type="button"
                         id="toc-button"
                         class="text-black dark:text-white hover:text-[#046dc3] dark:hover:text-orange-400 w-[90%] text-left max-w-[800px]
-                            underline underline-offset-2 duration-300">
+                            underline underline-offset-2 duration-300 print:hidden">
                         expand table of contents &darr;
                     </button>
-                    <aside id="table-of-contents" class="w-[90%] max-w-[800px] pl-4 prose dark:prose-invert text-left hidden">
+                    <aside
+                        id="table-of-contents"
+                        class="w-[90%] print:w-full max-w-[800px] pl-4 prose dark:prose-invert text-left hidden print:block">
                         {{ content | toc | safe }}
                     </aside>
                 </div>
             {%- endif -%}
-            <div class="w-[90%] max-w-[800px] print:max-w-none prose dark:noprint:prose-invert transition-colors duration-500 flex
-                    flex-col">
+            <div class="w-[90%] max-w-[800px] print:w-full print:max-w-none prose dark:noprint:prose-invert transition-colors duration-500
+                    flex flex-col">
                 {%- if toc %}
-                    <hr class="mb-4"/>
+                    <hr class="mb-4 print:mb-8"/>
                 {%- endif -%}
                 {{ content | safe }}
             </div>
@@ -61,13 +64,10 @@
         <div class="hidden sm:block print:hidden">
             <span class="font-mono prose dark:prose-invert absolute top-9 right-0 pr-[100px]">toggle theme</span><input type="checkbox" class="absolute top-9 right-9 theme-toggle hidden" id="switch"/><label class="absolute top-9 right-9" id="theme-toggle-label" for="switch"></label>
         </div>
-        <footer id="webfooter" class="mt-auto mx-auto mb-2 text-center prose print:hidden dark:prose-invert opacity-50">created
-            with
+        <footer id="webfooter" class="mt-auto mx-auto mb-2 text-center prose print:hidden dark:prose-invert opacity-50">
+            parallelized @ shriteq 2023 | created with
             <a class="opacity-80" href="https://www.11ty.dev/">11ty</a>
             by varun sahni</footer>
-        <footer id="printfooter" class="hidden print:block mt-auto mx-auto text-center prose opacity-50">parallellized @ shriteq
-            2023
-        </footer>
         <script src="/scripts/toggle_theme.js"></script>
         <script>
             const tocButton = document.getElementById("toc-button");

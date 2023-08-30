@@ -13,5 +13,3 @@ layout: "layouts/md-layout.njk"
 - All problem guidelines must be followed and all tasks must be completed
 - The guidelines contain details about the elements of the program that must be implemented for correctness (eg. required functions, classes)
   - &gt;= **Note:** Local tests check for correctness and speedup. However, the speedup multiple may not be indicative of the speedup used for scoring due to discrepancies in the hardware used for testing and your systems - thus, it is better if you use the local speedup as a gauge for performance {.text-xs}
-
-## why _parallelized?_ {.mt-0}
