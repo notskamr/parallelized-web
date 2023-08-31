@@ -7,13 +7,11 @@
     <link rel="icon" href="/assets/parallelized-small.svg" type="image/svg+xml"/>
     <script>
       localStorage.setItem("theme", localStorage.getItem('theme') || "dark");
-      document
-        .documentElement
-        .classList
-        .remove(
-          localStorage.getItem('theme') === "dark"
-          ? ""
-          : "dark");
+      if (localStorage.getItem("theme") !== "dark") 
+        document
+          .documentElement
+          .classList
+          .remove("dark")
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
