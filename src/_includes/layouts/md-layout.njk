@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="dark scroll-smooth">
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -20,21 +20,23 @@
         <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet"/>
             {% set css %}{% include "src/styles/index.css" %}{% endset %}
         <style>{{css | postcss | safe}}</style>
-        <style></style>
     </head>
     <body class="font-mono dark:bg-gray-900 transition-colors duration-500 overflow-x-hidden flex flex-col min-h-screen">
         <div class="w-[100dvw] flex justify-items-center items-center flex-col p-8 print:p-0">
             <a
-                class="text-white invert dark:noprint:invert-0 underline underline-offset-2 flex flex-col items-center justify-center
-                    hover:-translate-y-1 hover:text-orange-400 duration-300 mb-8"
+                class="text-black dark:noprint:text-white flex flex-col items-center justify-center hover:-translate-y-1
+                    hover:text-blue-600 dark:hover:text-orange-400 duration-500 mb-8"
                 href="/">
-                <img
+                <!-- <img
                     src="/assets/parallelized-svg1.1.svg"
                     width="1280"
                     height="217"
                     alt="Themed parallellized logo"
-                    class="w-[300px] h-auto"/>
-                <span class="print:hidden">return to home</span>
+                    class="w-[300px] h-auto"/> -->
+                <div class=" text-[min(8vw,2.25rem)] text-center font-medium no-underline">
+                    <span class="inline no-underline">|parallelized|</span>
+                </div>
+                <span class="print:hidden underline underline-offset-2">return to home</span>
             </a>
             {%- if toc %}
                 <hr class="hidden print:block w-[90%] print:w-full max-w-[800px] print:max-w-none prose"/>
@@ -42,8 +44,8 @@
                     <button
                         type="button"
                         id="toc-button"
-                        class="text-black dark:text-white hover:text-[#046dc3] dark:hover:text-orange-400 w-[90%] text-left max-w-[800px]
-                            underline underline-offset-2 duration-300 print:hidden">
+                        class="text-black dark:text-white hover:text-blue-600 dark:hover:text-orange-400 w-[90%] text-left max-w-[800px]
+                            underline underline-offset-2 duration-500 print:hidden">
                         expand table of contents &darr;
                     </button>
                     <aside
