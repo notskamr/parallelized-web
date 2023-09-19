@@ -1,6 +1,12 @@
 module.exports = {
   content: ["./src/**/*.{njk,md}"],
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [
+    require("@tailwindcss/typography"),
+    function ({ addVariant }) {
+      addVariant("child", "& > *");
+      addVariant("child-hover", "& > *:hover");
+    },
+  ],
   darkMode: "class",
   theme: {
     extend: {

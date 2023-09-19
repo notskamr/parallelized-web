@@ -1,6 +1,6 @@
 ---
 tags: guideline_page
-title: '|parallelized| guidelines'
+title: 'guidelines'
 layout: "layouts/md-layout.njk"
 toc: true
 ---

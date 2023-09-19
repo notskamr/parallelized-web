@@ -16,23 +16,29 @@
                     : "dark");
         </script>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-            {% set css %}{% include "src/styles/index.css" %}{% endset %}
-        <style>{{css | postcss | safe}}</style>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"/>
+        <link href="https://fonts.googleapis.com/css2?family=fira+code:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+        {% set css %}{% include "src/styles/index.css" %}{% endset %}
+        <style>
+            {{css | postcss | safe}}
+        </style>
+        <style>
+            a {
+                transition: color 0.15s;
+            }
+            a:hover {
+                color: rgb(37 99 235);
+            }
+            .dark a:hover {
+                color: rgb(251 146 60);
+            }
+        </style>
     </head>
     <body class="font-mono dark:bg-gray-900 transition-colors duration-500 overflow-x-hidden flex flex-col min-h-screen">
         <div class="w-[100dvw] flex justify-items-center items-center flex-col p-8 print:p-0">
-            <a
-                class="text-black dark:noprint:text-white flex flex-col items-center justify-center hover:-translate-y-1
-                    hover:text-blue-600 dark:hover:text-orange-400 duration-500 mb-8"
-                href="/">
-                <!-- <img
-                    src="/assets/parallelized-svg1.1.svg"
-                    width="1280"
-                    height="217"
-                    alt="Themed parallellized logo"
-                    class="w-[300px] h-auto"/> -->
+            <a class="text-black dark:noprint:text-white flex flex-col items-center justify-center hover:-translate-y-1
+                    hover:text-blue-600 dark:hover:text-orange-400 duration-500 mb-8" href="/">
+                <!-- <img src="/assets/parallelized-svg1.1.svg" width="1280" height="217" alt="Themed parallellized logo" class="w-[300px] h-auto"/> -->
                 <div class=" text-[min(8vw,2.25rem)] text-center font-medium no-underline">
                     <span class="inline no-underline">|parallelized|</span>
                 </div>
@@ -41,16 +47,11 @@
             {%- if toc %}
                 <hr class="hidden print:block w-[90%] print:w-full max-w-[800px] print:max-w-none prose"/>
                 <div id="toc-div" class="w-full mb-6 print:mb-0 flex justify-center items-center flex-col">
-                    <button
-                        type="button"
-                        id="toc-button"
-                        class="text-black dark:text-white hover:text-blue-600 dark:hover:text-orange-400 w-[90%] text-left max-w-[800px]
+                    <button type="button" id="toc-button" class="text-black dark:text-white hover:text-blue-600 dark:hover:text-orange-400 w-[90%] text-left max-w-[800px]
                             underline underline-offset-2 duration-500 print:hidden">
                         expand table of contents &darr;
                     </button>
-                    <aside
-                        id="table-of-contents"
-                        class="w-[90%] print:w-full max-w-[800px] pl-4 prose dark:prose-invert text-left hidden print:block">
+                    <aside id="table-of-contents" class="w-[90%] print:w-full max-w-[800px] pl-4 prose dark:prose-invert text-left hidden print:block">
                         {{ content | toc | safe }}
                     </aside>
                 </div>
@@ -64,7 +65,8 @@
             </div>
         </div>
         <div class="hidden sm:block print:hidden">
-            <span class="font-mono prose dark:prose-invert absolute top-9 right-0 pr-[100px]">toggle theme</span><input type="checkbox" class="absolute top-9 right-9 theme-toggle hidden" id="switch"/><label class="absolute top-9 right-9" id="theme-toggle-label" for="switch"></label>
+            <span class="font-mono prose dark:prose-invert absolute top-9 right-0 pr-[100px]">toggle theme</span><input type="checkbox" class="absolute top-9 right-9 theme-toggle hidden" id="switch"/>
+            <label class="absolute top-9 right-9" id="theme-toggle-label" for="switch"></label>
         </div>
         <footer id="webfooter" class="mt-auto mx-auto mb-2 text-center prose print:hidden dark:prose-invert opacity-50">
             parallelized @ shriteq 2023
@@ -77,19 +79,29 @@
             const tocButton = document.getElementById("toc-button");
             const toc = document.getElementById("table-of-contents");
             const tocDiv = document.getElementById("toc-div");
-            tocButton.addEventListener("click", () => {
-                toc.classList.toggle("hidden");
-                tocDiv.classList.toggle("mb-6");
-                tocButton.innerText = toc.classList.contains("hidden")
-                    ? "expand table of contents ↓"
-                    : "collapse table of contents ↑";
+            tocButton && tocButton.addEventListener("click", () => {
+                toc
+                    .classList
+                    .toggle("hidden");
+                tocDiv
+                    .classList
+                    .toggle("mb-6");
+                tocButton.innerText = toc
+                    .classList
+                    .contains("hidden")
+                        ? "expand table of contents ↓"
+                        : "collapse table of contents ↑";
             });
+            const anchors = document.querySelectorAll("a");
+            for (let i = 0; i < anchors.length; i++) {
+                new URL(anchors[i].href).origin !== window.location.origin && (anchors[i].setAttribute("target", "_blank"), anchors[i].setAttribute("rel", "noopener noreferrer"));
+            }
         </script>
     </body>
     <style>
         .cb > input {
             margin-right: 0.5rem;
-            border-radius: 50%
+            border-radius: 50%;
         }
         .theme-toggle {
             height: 0;
@@ -115,7 +127,7 @@
             height: 15px;
             background: #000000;
             border-radius: 90px;
-            transition: 0.5s;
+            transition: 0.3s;
         }
         input + #theme-toggle-label {
             transition: background-color 0.2s ease-in-out;
@@ -129,7 +141,9 @@
             background-color: white;
         }
         #theme-toggle-label:active:after {
-            width: 130px;
+            width: 20px;
         }
     </style>
+</html>
+</head>
 </html>

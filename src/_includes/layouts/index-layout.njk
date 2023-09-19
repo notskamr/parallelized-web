@@ -15,9 +15,11 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-      {% set css %}{% include "src/styles/index.css" %}{% endset %}
-    <style>{{css | postcss | safe}}</style>
+    <link href="https://fonts.googleapis.com/css2?family=fira+code:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+    {% set css %}{% include "src/styles/index.css" %}{% endset %}
+    <style>
+      {{css | postcss | safe}}
+    </style>
   </head>
   <body class="prose font-mono dark:bg-gray-900 dark:noprint:prose-invert transition-colors duration-500">
     {{ content | safe }}
